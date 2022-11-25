@@ -23,30 +23,28 @@ public class Calculator {
         if(b == null || a == null) {
             return "Не введен один или оба параметра!";
         }
-        return a + " + " + b + " = " + calculatorService.plusNumbers(a, b);
+        return calculatorService.buildResult(a, b, calculatorService.plusNumbers(a, b), "+");
     }
     @GetMapping(path = "/minus")
     public String minusNumbers(@RequestParam(name = "num1", required = false) Integer a, @RequestParam(name = "num2", required = false) Integer b) {
         if(b == null || a == null) {
             return "Не введен один или оба параметра!";
         }
-        return a + " - " + b + " = " + calculatorService.minusNumbers(a, b);
+        return calculatorService.buildResult(a, b, calculatorService.minusNumbers(a, b), "-");
     }
     @GetMapping(path = "/multiply")
     public String multiplyNumbers(@RequestParam(name = "num1", required = false) Integer a, @RequestParam(name = "num2", required = false) Integer b) {
         if(b == null || a == null) {
             return "Не введен один или оба параметра!";
         }
-        return a + " * " + b + " = " + calculatorService.multiplyNumbers(a, b);
+        return calculatorService.buildResult(a, b, calculatorService.multiplyNumbers(a, b), "*");
     }
     @GetMapping(path = "/divide")
     public String divideNumbers(@RequestParam(name = "num1", required = false) Integer a, @RequestParam(name = "num2", required = false) Integer b) {
         if(b == null || a == null) {
             return "Не введен один или оба параметра!";
-        } else if (b == 0) {
-            return "На ноль делить нельзя, сволочь!";
         } else {
-            return a + " / " + b + " = " + calculatorService.divideNumbers(a, b);
+            return calculatorService.buildResult(a, b, calculatorService.divideNumbers(a, b), "/");
         }
     }
 }

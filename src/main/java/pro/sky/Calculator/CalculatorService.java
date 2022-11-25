@@ -10,21 +10,25 @@ public class CalculatorService {
     public String greetingsInCalculator() {
         return "Добро пожаловать в калькулятор";
     }
-    public Integer plusNumbers(Integer a, Integer b) {
+    public int plusNumbers(Integer a, Integer b) {
         return a + b;
     }
-    public Integer minusNumbers(Integer a, Integer b) {
+    public int minusNumbers(Integer a, Integer b) {
         return a - b;
     }
 
-    public Integer multiplyNumbers(Integer a, Integer b) {
+    public int multiplyNumbers(Integer a, Integer b) {
         return a * b;
     }
-    public double divideNumbers(Integer a, Integer b) {
+    public Double divideNumbers(Integer a, Integer b) {
+        if (b == 0) {
+            throw new DivideByZeroException("Произведена попытка деления на ноль!");
+        }
         return (double) a / (double) b;
+    }
 
-
-
+    public String buildResult(double a, double b, double result, String sign) {
+        return a + " " + sign + " " + b + " = " + result;
     }
 
 }
